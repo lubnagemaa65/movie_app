@@ -1,29 +1,23 @@
+import 'package:movie_app/movies/domain/entities/movie.dart';
 
-// ignore_for_file: must_be_immutable
-
-import 'package:flutter/foundation.dart';
-
-import '../../domain/entities/movie.dart';
-
-class MoviesModel extends Movie{
-  MoviesModel({
-    required super.backdropPath, 
+class MovieModel extends Movie {
+  const MovieModel({
     required super.id,
-     required super.overview, 
-     required super.popularity, 
-     required super.releaseDate, 
-     required super.title, 
-     required super.voteAverage, required super.genresID});
+    required super.title,
+    required super.backdropPath,
+    required super.genreIds,
+    required super.overview,
+    required super.voteAverage,
+    required super.releaseDate,
+  });
 
-factory MoviesModel.fromJson(Map<String,dynamic>json)=> MoviesModel(
-  backdropPath: json['backdropPath'],
-   id: json['id'] ,
-   overview:json['overview'],
-    popularity:json['popularity'], 
-    releaseDate: json['releaseDate'],
-     title: json['title'],
-      voteAverage: json['voteAverage'].toDouble(), 
-      genresID: List<int>.from(json['genresID'].map((e) => e
-      )));
-
-  }
+  factory MovieModel.fromJson(Map<String, dynamic> json) => MovieModel(
+        id: json["id"],
+        title: json["title"],
+        backdropPath: json["backdrop_path"],
+        genreIds: List<int>.from(json["genre_ids"].map((e) => e)),
+        overview: json["overview"],
+        voteAverage: json["vote_average"].toDouble(),
+        releaseDate: json["release_date"],
+      );
+}

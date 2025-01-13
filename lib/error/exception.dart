@@ -1,6 +1,5 @@
 import 'package:movie_app/core/network/error_msg_model.dart';
 
-
 //in this file instead of return null data we throw an exception
 class ServerException implements Exception {
   final ErrorMsgModel errorMsgModel;
@@ -11,8 +10,8 @@ class ServerException implements Exception {
 
 //if we want to work with local data source we can add:
 class LocalDataBaseException implements Exception {
-  final String mssg;
+  final String message;
   LocalDataBaseException({
-    required this.mssg,
+    required this.message,
   });
 }
